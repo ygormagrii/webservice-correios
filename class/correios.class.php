@@ -3,6 +3,8 @@
 class Correios {
 
 	public
+	$empresa = '',
+	$senha = '',
 	$servico,
 	$cepOrigem,
 	$cepDestino,
@@ -17,14 +19,13 @@ class Correios {
 	$avisoRecebimento = 'N',
 	$retorno = 'xml';
 
-	# adicao dos parametros que talvez estejam faltando
-	$empresa = '';
-	$senha = '';
+// 	public $shouldBe = 'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=&sDsSenha=&sCepOrigem=70002900&sCepDestino=71939360&nVlPeso=1&nCdFormato=1&nVlComprimento=20&nVlAltura=5&nVlLargura=15&sCdMaoPropria=n&nVlValorDeclarado=0&sCdAvisoRecebimento=n&nCdServico=40010&nVlDiametro=0&StrRetorno=xml';
 
 	public function calc() {
 
-		$cURL = curl_init(sprintf(
-				'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=%s&sDsSenha=%s&nCdServico=%s&sCepOrigem=%s&sCepDestino=%s&nVlPeso=%s&nCdFormato=%s&nVlAltura=%s&nVlLargura=%s&nVlDiametro=%s&sCdMaoPropria=%s&nVlValorDeclarado=%s&sCdAvisoRecebimento=%s&StrRetorno=%s',
+		$cURL =/* curl_init(*/sprintf(
+				'http://ws.correios.com.br/calculador/CalcPrecoPrazo.aspx?nCdEmpresa=%s&sDsSenha=%s&nCdServico=%s&sCepOrigem=%s&sCepDestino=%s&nVlPeso=%s&nCdFormato=%s&nVlComprimento=%s& 
+				nVlAltura=%s&nVlLargura=%s&nVlDiametro=%s&sCdMaoPropria=%s&nVlValorDeclarado=%s&sCdAvisoRecebimento=%s&StrRetorno=%s',
 				$this->empresa,
 				$this->senha,
 				$this->servico,
@@ -40,11 +41,14 @@ class Correios {
 				$this->valorDeclarado,
 				$this->avisoRecebimento,
 				$this->retorno
-		));
-			curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
-			$string	= curl_exec($cURL);
-			curl_close($cURL);
-			$xml = simplexml_load_string($string);
-			var_dump($xml);
+		/*)*/);
+		
+				var_dump($cURL);
+//  			curl_setopt($cURL, CURLOPT_RETURNTRANSFER, true);
+ 		//	$string	= curl_exec($cURL);
+ 		//var_dump($string);
+// 			curl_close($cURL);
+// 			$xml = simplexml_load_string($string);
+// 			var_dump($xml);
 	}
 }
